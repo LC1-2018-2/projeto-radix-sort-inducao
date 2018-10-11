@@ -1,0 +1,188 @@
+\documentclass[a4paper, 10pt]{article}
+
+%conjunto de pacotes para utilização de caracteres latinos
+\usepackage[latin1]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage[T1]{fontenc}
+
+% The following packages can be found on http:\\www.ctan.org
+\usepackage{graphics} % for pdf, bitmapped graphics files
+\usepackage{epsfig}   % for postscript graphics files
+\usepackage{mathptmx} % assumes new font selection scheme installed
+\usepackage{times}    % assumes new font selection scheme installed
+\usepackage{amsmath}  % assumes amsmath package installed
+\usepackage{amssymb}  % assumes amsmath package installed
+%\usepackage{makeidx}  % cria indice remissivo \makeindex no preanbulo, \printindex no final do texto para colocação do indice remissivo e \index{} para marcar a palavra que deve ser colocada no indice.
+
+\usepackage[ND,SEQ]{prftree}
+\usepackage{setspace}
+\usepackage{multicol}
+
+\title{\LARGE \bf Relatório final Projeto Radix-Sort }
+
+\author{Felipe Luís Pinheiro\footnote{matricula:18/0052667} \and Henrique \and Gabriel }
+
+%\date{ 18 de novembro de 2018}
+
+\makeindex
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+
+Este é o relatório final do projeto Radix-Sort da disciplina Lógica Computacional 1 (117366) ministrada pelo professor Flávio L. C. de Moura do departamento de ciência da computação da Universidade de Brasília no semestre de 2°/2018.
+
+O objetivo primário desse projeto é provar matematicamente e logicamente que o algoritmo Radix-sort funciona e é logicamente correto e completo. 
+
+\end{abstract}
+
+\section{Introdução} %Contextualização do problema
+
+Métodos de ordenação são processos utilizados para se organizar um conjunto de objetos, uma lista de nomes, uma sequência de números, entre outros. Podemos, por exemplo, ordenar roupas pelas cores seguindo a ordem do arco-iris - vermelho, laranjado, amarelo, verde, azul, violeta - neste caso dando problema para ordenar cores como preto e branco, também podemos ordenar nomes por ordem alfabética, entre outros exemplos.
+
+Com o desenvolvimento da computação vários algoritmos de ordenação foram desenvolvidos ao longo dos anos, podemos citar: bubble sort, selection sort, inserction sort, shellsort, quick sort, merge sort entre outros. Cada um com sua complexidade de implementação e características próprias que os tornam mais úteis em determinadas situações, tal como o heapsort que é especialmente útil se a estrutura a ser ordenada for uma árvore. 
+
+Neste trabalho estaremos analisando o método de ordenação radix sort usando como algorítimo auxiliar o marge sort, sendo que temos como objetivo ordenar um conjunto de números com mesma quantidade de algarismos, na qual iremos ordenar os números do algarismo menos significativo para o mais significativo e queremos verificar se esse método sempre funciona, ou seja, queremos demonstrar que a correção de merge sort como algoritmo estável para radix sort. 
+
+\section{Problema}
+
+Imagine cartões com números de 5 algarismos decimais gravados nele, podemos separar os cartões em 10 pilhas e ordena-los de acordo com o primeiro digito, após podemos separar novamente em 10 pilhas e ordenar de acordo com o segundo digito em mais 10 para o terceiro, mais 10 para o 4° e mais 10 para o quinto ficando com um total de $10^5$ pilhas que precisam ser unidas posteriormente em uma sequência correta para termos uma única pilha ordenada, ou seja, estamos criando uma grande demanda de trabalho para resolver esse problema, porém o que acontecerá se fizermos o processo no sentido do digito menos significativo para o mais significativo, sem alterar a posição relativa entre dois elementos iguais durante o processo de ordenação, processo estável . 
+
+Veja o exemplo do processo de ordenação abaixo:
+
+\begin{multicols}{4}
+\noindent
+342\\
+261\\
+542\\
+432\\
+344\\
+123\\
+143\\
+
+\columnbreak
+
+\noindent
+261\\
+342\\
+542\\
+432\\
+123\\
+143\\
+344\\
+
+\columnbreak
+
+\noindent
+123\\
+432\\
+342\\
+542\\
+143\\
+344\\
+261\\
+
+\columnbreak
+
+\noindent
+123\\
+143\\
+261\\
+342\\
+344\\
+432\\
+542\\
+\end{multicols}
+
+
+
+\subsection{Solução}
+
+\subsection{Formalização}
+
+
+\section{Conclusão}
+
+\appendix
+
+\section{Código PVS}
+
+Nessa seção é possível verificar todos os código PVS utilizados nesse projeto.
+
+\section{Regras de Gentzen}
+
+
+%\doublespacing
+\setstretch{2}
+\center{
+Axiomas: \\
+\begin{tabular}{ll}
+$	\bot, \Gamma \implies \Delta~_{(L_\bot)} $
+&
+$ \Gamma , \varphi \implies \varphi, \Delta~_{(A_x)}$
+\\
+\end{tabular}}
+
+\center{
+Estrutural Rules:\\
+\begin{tabular}{ll}
+Left Rules & Right Rules \\
+
+\prftree[r]{($L_w$) }{\Gamma \implies \Delta}{\varphi, \Gamma \implies \Delta}
+ & 
+\prftree[r]{($R_w$)}{\Gamma \implies \Delta}{\Gamma \implies \Delta, \varphi}
+
+\\
+\prftree[r]{($L_c$)}{\varphi, \varphi, \Gamma \implies \Delta}{\varphi, \Gamma \implies \Delta}
+&
+\prftree[r]{($R_c$)}{\Gamma \implies \Delta, \varphi, \varphi}{\Gamma \implies \Delta, \varphi}
+
+\\
+\end{tabular}}
+
+
+\center{ 
+Logical Rules: \\
+\begin{tabular}{ll}
+Left Rules & Right Rules \\
+\prftree[r]{($L_\land$)}{\varphi_{i\in \{1,2 \}} , \Gamma \implies \Delta  }{ \varphi_1 \land \varphi_2 , \Gamma \implies \Delta } 
+& 
+\prftree[r]{($R_\land$)}{\Gamma \implies \Delta, \varphi ~~~~~ \Gamma \implies \Delta, \psi}{\Gamma \implies \Delta, \varphi \land \psi}\\
+
+\prftree[r]{($L_\lor$)}{\varphi , \Gamma \implies \Delta   ~~~~~ \psi , \Gamma \implies \Delta}{ \varphi \lor \psi , \Gamma \implies \Delta}
+& 
+\prftree[r]{($R_\lor$)}{\Gamma \implies \Delta , \varphi_{i\in \{1,2 \}}}{\Gamma \implies \Delta , \varphi_1 \lor \varphi_2 }\\
+
+\prftree[r]{($L_\to$)}{\Gamma \implies \Delta , \varphi ~~~~\psi, \Gamma \implies \Delta}{\varphi \to \psi, \Gamma \implies \Delta} 
+&
+\prftree[r]{($R_\to$)}{ \varphi, \Gamma \implies \Delta, \psi }{ \Gamma \implies \Delta , \varphi \to \psi}\\
+
+\prftree[r]{($L_\forall$)}{\varphi[x/t], \Gamma \implies \Delta}{ \forall_x , \Gamma \implies \Delta} 
+&
+\prftree[r]{($R_\forall$), y $\notin$ fv($\Gamma, \Delta$) }{\Gamma \implies \Delta, \varphi[x/y]}{\Gamma \implies \Delta, \forall_x \varphi}\\
+
+\prftree[r]{($L_\exists$), y $\notin$ fv($\Gamma, \Delta$)}{\varphi[x/y], \Gamma \implies \Delta}{\exists_x, \Gamma \implies \Delta} 
+&
+\prftree[r]{($R_\exists$)}{\Gamma \implies \Delta, \varphi[x/t]}{\Gamma \implies \Delta, \exists_x \varphi}\\
+
+\end{tabular}}
+
+\singlespacing
+
+Acima colocamos os sequentes básicos da regra de Gentzen, abaixo mostramos o uso desses sequentes dentro do PVS.
+
+
+\begin{thebibliography}{9}
+
+\bibitem{Apostila}
+Flávio L. C. de Moura (Prof.).
+\textit{Indução Matemática}.
+
+\bibitem{wiki_PVS}
+
+\end{thebibliography}
+
+%\printindex
+
+\end{document}
